@@ -1,4 +1,4 @@
-let books = [
+const books = [
     {
       code: 101,
       name: "המבוך הסודי",
@@ -90,4 +90,18 @@ let books = [
     },
   ];
 
-  export default books;
+
+const users = [
+  { id: 1, username: 'alice',    email: 'alice@example.com',    password: 'alicePass1',    borrowedBooks: [101, 102] },
+  { id: 2, username: 'bob',      email: 'bob@example.com',      password: 'bobPass2',      borrowedBooks: [103] },
+  { id: 3, username: 'carol',    email: 'carol@example.com',    password: 'carolPass3',    borrowedBooks: [] },
+  { id: 4, username: 'david',    email: 'david@example.com',    password: 'davidPass4',    borrowedBooks: [104, 105, 106] },
+  { id: 5, username: 'eve',      email: 'eve@example.com',      password: 'evePass5',      borrowedBooks: [107] },
+  { id: 6, username: 'frank',    email: 'frank@example.com',    password: 'frankPass6',    borrowedBooks: [] },
+  { id: 7, username: 'grace',    email: 'grace@example.com',    password: 'gracePass7',    borrowedBooks: [108, 109] },
+  { id: 8, username: 'heidi',    email: 'heidi@example.com',    password: 'heidiPass8',    borrowedBooks: [] },
+  { id: 9, username: 'ivan',     email: 'ivan@example.com',     password: 'ivanPass9',     borrowedBooks: [110] },
+  { id: 10, username: 'judy',    email: 'judy@example.com',     password: 'judyPass10',    borrowedBooks: [101, 110] }
+];
+
+export { users, books };
