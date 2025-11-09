@@ -1,7 +1,8 @@
 import express from 'express';
 import bookRouter from './routes/book.route.js';
 import userRouter from './routes/user.route.js';
-import  addRequestDate  from './middlewares/simple.middlewares.js';
+import  {addRequestDate,  printDate }  from './middlewares/simple.middlewares.js';
+import { errorHandler } from './middlewares/errores.middleware.js';
 
 const app = express();
 
@@ -14,7 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/books', bookRouter);
-app.use('/users', addRequestDate, userRouter);
+app.use('/users', addRequestDate, printDate, userRouter);
+
+app.use(errorHandler);
 
 
 

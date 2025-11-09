@@ -5,7 +5,7 @@ export const addRequestDate = (req, res, next) => {
 
 export const printDate = (req, res, next) => {    
     if (req.method === "GET" && req.currentDate != null) {
-        print(req.currentDate);
+        console.log(req.currentDate);
       }
     next();
 };

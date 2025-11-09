@@ -18,21 +18,21 @@ import { books } from '../db.js';
   };
   
 // /books/:code get
- export const getBookByCode = (req, res) => {
+ export const getBookByCode = (req, res, next) => {
     const book = books.find(x => x.code == +req.params.code);
     if (!book) {
-      return res.status(404).json({ error: 'לא נמצא ספר עם הקוד הזה' });
+      next({ status: 404, message: `product ${req.params.code} not found!` });
     }
     res.status(200).json(book);
   };
 
 
   // /books/:code Put
- export const updateBook = (req, res) => {
+ export const updateBook = (req, res, next) => {
     const index = books.findIndex(b => b.code === +req.params.code);
   
     if (index === -1) {
-      return res.status(404).json({ error: 'לא נמצא ספר עם הקוד הזה' });
+      next({ status: 404, message: `product ${req.params.code} not found!` });
     }
   
     const book = { ...req.body };
@@ -43,10 +43,10 @@ import { books } from '../db.js';
   };
   
  //'/books/:code/:id' patch
- export const addLoan = (req, res) => {
+ export const addLoan = (req, res, next) => {
     const book = books.find(x => x.code == +req.params.code);
     if (!book) {
-      return res.status(404).json({ error: 'לא נמצא ספר עם הקוד הזה' });
+      next({ status: 404, message: `product ${req.params.id} not found!` });
     }
   
     book.borrows.push({ date: new Date(), customerCode: req.params.id });
@@ -54,10 +54,10 @@ import { books } from '../db.js';
   };
   
   // '/books/:code' delete
- export const deleteBook = (req, res) => {
+ export const deleteBook = (req, res, next) => {
     const index = books.findIndex(x => x.code == req.params.code);
     if (index === -1) {
-      return res.status(404).json({ error: 'לא נמצא ספר עם הקוד הזה' });
+      next({ status: 404, message: `product ${req.params.code} not found!` });
     }
   
     books.splice(index, 1);
