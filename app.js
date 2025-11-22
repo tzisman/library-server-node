@@ -3,8 +3,18 @@ import bookRouter from './routes/book.route.js';
 import userRouter from './routes/user.route.js';
 import  {addRequestDate,  printDate }  from './middlewares/simple.middlewares.js';
 import { errorHandler } from './middlewares/errores.middleware.js';
+import cors from "cors";
+import morgan from "morgan";
 
 const app = express();
+
+
+app.use(cors());
+
+if (process.env.NODE_ENV === "development") {
+    app.use(morgan("dev"));
+}
+
 
 const port = 5000;
 app.listen(port, () => {
